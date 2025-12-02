@@ -1,10 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 import { Account } from './modules/Account/Account'
 import NavBar from './components/NavBar/NavBar'
 import Dashboard from './modules/Dashboard/Dashboard'
 import Settings from './modules/Settings/Settings'
 
+import MfeAccount from '@workspace/mfe-account'
 import '@workspace/shared/global.css'
 import './App.css'
 
@@ -17,7 +18,9 @@ const App = (): React.ReactElement => {
           <NavBar />
           <main>
             <Routes>
-              <Route path="/" element={<Account />} />
+              <Route path="/" element={<Navigate to="/mfe-account/account" replace />} />
+              <Route path="mfe-account/*" element={<MfeAccount />} />
+              <Route path="/account" element={<Account />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/settings" element={<Settings />} />
             </Routes>
